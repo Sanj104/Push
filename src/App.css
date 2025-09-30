@@ -1,38 +1,162 @@
-.App {
+.hero-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.hero-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2; /* Adjust opacity for a subtle effect */
+  z-index: -1; /* Ensure the backdrop is behind the text */
+  
+}
+.navbar {
+  padding-top: 20px;
+
+  font-size: 29px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #f8f9fa;
+}
+.navbar .form-control {
+  width: 300px;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 16px;
+}
+.navbar .btn {
+  margin-left: 10px;
+}
+.watchlist-container {
+  background-color: #1c1c1c;  /* dark theme */
+  min-height: auto;
+  color: #f8f9fa; /* light text */
+}
+.watchlist-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #444; /* subtle separator */
+}
+/* Dark background for the whole watchlist */
+.watchlist-container {
+  background: linear-gradient(135deg, #141414, #1e1e1e);
+  min-height: 100vh;
+  color: #e5e5e5;
+}
+
+/* Movie cards with glowing hover */
+.movie-card {
+  background-color: #222;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(255, 0, 70, 0.5);
+}
+
+/* Accent button (pink-red Netflix vibe) */
+.btn-accent {
+  background-color: #e50914;
+  border: none;
+  color: #fff;
+}
+.btn-accent:hover {
+  background-color: #f40612;
+  color: #fff;
+}
+
+/* Remove button (cool gray) */
+.btn-remove {
+  background-color: #444;
+  border: none;
+  color: #eee;
+}
+.btn-remove:hover {
+  background-color: #666;
+  color: #fff;
+}
+.movie-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+.movie-card:hover {
+  transform: scale(1.15);
+  margin: 0 1rem; /* creates space when zoomed */
+}
+.movie-card img {
+  transition: opacity 0.3s ease;
+}
+
+.movie-card:hover img {
+  opacity: 0.8;
+}
+.movie-card .card-body {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movie-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem;
+  scrollbar-width: thin;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movie-row::-webkit-scrollbar {
+  height: 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movie-row::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+/* Fixed dimensions for cards */
+.movie-card {
+  flex: 0 0 auto;       /* Don't shrink */
+  width: 220px;         /* Lock width */
+  height: 380px;        /* Lock height */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Make poster fit inside */
+.movie-card img {
+  width: 100%;
+  height: 70%;          /* Poster takes 70% of card */
+  object-fit: cover;
+}
+
+.movie-card .card-body {
+  height: 30%;          /* Rest of card content */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Hover Netflix effect */
+.movie-card:hover {
+  transform: scale(1.1);
+  z-index: 5;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
 }
